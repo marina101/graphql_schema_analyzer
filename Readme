@@ -1,0 +1,13 @@
+
+# Interesting metrics:
+
+# Number of Mutations
+  # Number of Deprecated objects
+# Number of Query
+  # Number of Deprecated objects
+# Number of subscription
+# Number of directives
+
+# Impactful goal: 
+  # 1) Read the schema and notify on a github issue all the derprecated fields we have. 
+  # 2) Who use that fields? 
