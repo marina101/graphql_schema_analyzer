@@ -5,9 +5,9 @@ require "graphql"
 require_relative 'schema_analyzer'
 
 class IntrospectionQueryAnalyzer
-  def initialize(schema_path: "fixtures/fixture.json" )
+  def initialize(schema_path: "fixtures/schema.graphql" )
     authenticate
-    @schema = read_schema
+    @schema = read_schema(schema_path)
   end
 
   def analyze
@@ -19,8 +19,8 @@ class IntrospectionQueryAnalyzer
 
   private
 
-  def read_schema
-    schema_str = File.read "fixtures/schema.graphql"
+  def read_schema(schema_path)
+    schema_str = File.read schema_path
     GraphQL::Schema.from_definition(schema_str)
   end
 
