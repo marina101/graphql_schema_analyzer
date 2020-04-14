@@ -1,3 +1,5 @@
+require 'byebug'
+
 class TypeNotFound < StandardError
 end
 
@@ -7,12 +9,12 @@ class SchemaAnalyzer
     analyze
   end
 
-  attr_reader :count_of_mutations_types, :count_of_queries_types, :count_of_subscriptions_types, :analysis
+  attr_reader :analysis, :schema
 
   def analyze
-    @count_of_mutations_types       = count(type: "mutation")
-    @count_of_queries_types         = count(type: "query")
-    @count_of_subscriptions_types   = count(type: "subscription")
+    count_of_mutations_types       = count(type: "mutation")
+    count_of_queries_types         = count(type: "query")
+    count_of_subscriptions_types   = count(type: "subscription")
 
     @analysis = {
       mutations: count_of_mutations_types,
@@ -30,14 +32,11 @@ class SchemaAnalyzer
   def count(type: "")
     case type
     when "mutation"
-      # TODO
-      0
+      @schema.mutation ? @schema.mutation.own_fields.length : 0
     when "query"
-      # TODO
-      0
+      @schema.query ? @schema.query.own_fields.length : 0
     when "subscription"
-      # TODO
-      0
+      @schema.subscription ? @schema.subscription.own_fields.length : 0
     else
       raise TypeNotFound
     end
