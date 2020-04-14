@@ -15,6 +15,10 @@ type Post {
   votes: Int
 }
 
+type Comment {
+  content: String
+}
+
 # the schema allows the following query:
 type Query {
   posts: [Post]
@@ -26,4 +30,12 @@ type Mutation {
   upvotePost (
     postId: Int!
   ): Post
+
+  downvotePost (
+    postId: Int!
+  ): Post
+}
+
+type Subscription {
+  commentAdded(repoFullName: String!): Comment
 }
