@@ -1,6 +1,10 @@
+directive @deprecated(
+  reason: String = "No longer supported"
+) on FIELD_DEFINITION | ENUM_VALUE
+
 type Author {
   id: Int!
-  firstName: String
+  firstName : String @deprecated(reason: "Use `newField`.")
   lastName: String
   """
   the list of Posts by this author
@@ -22,7 +26,7 @@ type Comment {
 # the schema allows the following query:
 type Query {
   posts: [Post]
-  author(id: Int!): Author
+  author(id: Int!): Author 
 }
 
 # this schema allows the following mutation:

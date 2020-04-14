@@ -15,11 +15,13 @@ class SchemaAnalyzer
     count_of_mutations_types       = count(type: "mutation")
     count_of_queries_types         = count(type: "query")
     count_of_subscriptions_types   = count(type: "subscription")
+    count_of_directives            = count(type: "directive")
 
     @analysis = {
       mutations: count_of_mutations_types,
       queries: count_of_queries_types,
-      subscriptions: count_of_subscriptions_types
+      subscriptions: count_of_subscriptions_types,
+      directives: count_of_directives
     }
   end
 
@@ -37,6 +39,8 @@ class SchemaAnalyzer
       @schema.query ? @schema.query.own_fields.length : 0
     when "subscription"
       @schema.subscription ? @schema.subscription.own_fields.length : 0
+    when "directive"
+      @schema.subscription ? @schema.directives.length : 0 
     else
       raise TypeNotFound
     end
