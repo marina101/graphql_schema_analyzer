@@ -1,12 +1,10 @@
 
 # Interesting metrics:
 
-# Number of Mutations
-  # Number of Deprecated objects
-# Number of Query
-  # Number of Deprecated objects
-# Number of subscription
-# Number of directives
+# Relationship between Types and make it into a graph (For queries) - try to plot the graph, look into gems that do that
+# Print names of the mutations
+# Complexity analysis
+
 
 # Impactful goal: 
   # 1) Read the schema and notify on a github issue all the derprecated fields we have. 
